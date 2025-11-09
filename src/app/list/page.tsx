@@ -28,6 +28,11 @@ const ListPage = async () => {
       owner,
     },
   });
+  const notes = await prisma.note.findMany({
+    where: {
+      owner,
+    },
+  });
   // console.log(stuff);
   return (
     <main>
@@ -38,7 +43,10 @@ const ListPage = async () => {
             <Row xs={1} md={2} lg={3} className="g-4">
               {contacts.map((contact) => (
                 <Col key={contact.firstName + contact.lastName}>
-                  <ContactCard contact={contact} />
+                  <ContactCard
+                    contact={contact}
+                    notes={notes.filter(note => (note.contactId === contact.id))}
+                  />
                 </Col>
               ))}
             </Row>

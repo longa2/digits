@@ -53,6 +53,23 @@ export async function addContact(contact:
 }
 
 /**
+ * Adds a new note to the database.
+ * @param note, an object with the following properties: contactId, note, owner, createdAt.
+ */
+export async function addNote(note: { contactId: number; note: string; owner: string; }) {
+  // console.log(`addContact data: ${JSON.stringify(stuff, null, 2)}`);
+  await prisma.note.create({
+    data: {
+      contactId: note.contactId,
+      note: note.note,
+      owner: note.owner,
+    },
+  });
+  // After adding, redirect to the list page
+  redirect('/list');
+}
+
+/**
  * Edits an existing stuff in the database.
  * @param stuff, an object with the following properties: id, name, quantity, owner, condition.
  */
