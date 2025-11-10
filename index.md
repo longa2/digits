@@ -1,6 +1,6 @@
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-page.png)
+<img src="doc/landing.png">
 
-nextjs-application-template is a sample Next.js 14 application that illustrates:
+digits is a Next.js 14 application that illustrates:
 
 - A standard directory layout using 'src/' as recommended in the [Next.js Project Structure](https://nextjs.org/docs/getting-started/project-structure) guide.
 - [Bootstrap 5 React](https://react-bootstrap.github.io/) for user interface.
@@ -18,7 +18,7 @@ To keep this codebase simple and small, some important capabilities are intentio
 - Security
 - Deployment
 
-Examples of the these capabilities will be provided elsewhere.
+Examples of these capabilities will be provided elsewhere.
 
 ## Installation
 
@@ -26,13 +26,13 @@ First, [install PostgreSQL](https://www.postgresql.org/download/). Then create a
 
 ```
 
-$ createdb nextjs-application-template
+$ createdb digits
 Password:
 $
 
 ```
 
-Second, go to [https://github.com/ics-software-engineering/nextjs-application-template](https://github.com/ics-software-engineering/nextjs-application-template), and click the "Use this template" button. Complete the dialog box to create a new repository that you own that is initialized with this template's files.
+Second, go to [https://github.com/longa2/digits](https://github.com/longa2/digits), and click the "Use this template" button. Complete the dialog box to create a new repository that you own that is initialized with this template's files.
 
 Third, go to your newly created repository, and click the "Clone or download" button to download your new GitHub repo to your local file system. Using [GitHub Desktop](https://desktop.github.com/) is a great choice if you use MacOS or Windows.
 
@@ -77,12 +77,11 @@ $ npx prisma db seed
 Environment variables loaded from .env
 Running seed command `ts-node --compiler-options {"module":"CommonJS"} prisma/seed.ts` ...
 Seeding the database
-Creating user: admin@foo.com with role: ADMIN
-Creating user: john@foo.com with role: USER
-Adding stuff: Basket (john@foo.com)
-Adding stuff: Bicycle (john@foo.com)
-Adding stuff: Banana (admin@foo.com)
-Adding stuff: Boogie Board (admin@foo.com)
+  Creating user: admin@foo.com with role: ADMIN
+  Creating user: john@foo.com with role: USER
+  Adding contacts: {"firstName":"Philip","lastName":"Johnson","address":"POST 307, University of Hawaii","image":"https://github.com/philipmjohnson.png","description":"I am a Professor of Information and Computer Sciences at the University of Hawaii, Director of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQualm a Professor of Information and Computer Sciences at the University of Hawaii, Director of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQuality.com.","owner":"john@foo.com"}
+  Adding contacts: {"firstName":"Henri","lastName":"Casanova","address":"POST 307, University of Hawaii","image":"https://avatars0.githubusercontent.com/u/7494478?s=460&v=4","description":"I am originally from France. I maintain a list of reports from my surf sessions. I have proof that I ran the Hana relay with an actual Team.","owner":"john@foo.com"}
+  Adding contacts: {"firstName":"Kim","lastName":"Binsted","address":"POST 307, University of Hawaii","image":"https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg","description":"Kim Binsted received her BSc in Physics at McGill (1991), and her PhD in Artificial Intelligence from the University of Edinburgh (1996). Her thesis topic was the computational modeling and generation of punning riddles, and her program, JAPE (Joke Analysis and Production Engine), generated puns such as 'What do you call a Martian who drinks beer? An ale-ien!'.","owner":"admin@foo.com"}
 
 🌱 The seed command has been executed.
 $
