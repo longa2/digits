@@ -1,4 +1,4 @@
-<img src="doc/landing.png">
+![](https://github.com/longa2/digits/raw/main/doc/digits-landing-page.png)
 
 digits is a Next.js 14 application that illustrates:
 
