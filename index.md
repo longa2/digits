@@ -166,7 +166,7 @@ The src/ directory has this structure:
 app/
 
   add/ # The add route
-    page.tsx # The Add Stuff Page
+    page.tsx # The Add Contact Page
 
   admin/
     page.tsx # The Admin Page
@@ -188,10 +188,10 @@ app/
       page.tsx # The Sign Up / Register Page
 
   edit/
-    page.tsx # The Edit Stuff Page
+    page.tsx # The Edit Contact Page
 
   list/
-    page.tsx # The List Stuff Page
+    page.tsx # The List Contact Page
 
   not-authorized/
     page.tsx # The Not Authorized Page
@@ -203,9 +203,15 @@ app/
   providers.tsx # Session providers.
 
   components/
-    AddStuffForm.tsx # The React Hook Form for adding stuff.
+    AddContactForm.tsx # The React Hook Form for adding contacts.
 
-    EditStuffForm.tsx # The Edit Stuff Form.
+    AddNoteForm.tsx # The React Hook Form for adding notes.
+    
+    ContactCard.tsx # The contact in the list contact page
+
+    ContactCardAdmin.tsx # The contact in the admin list contact page
+
+    EditContactForm.tsx # The Edit Contact Form.
 
     Footer.tsx # The application footer.
 
@@ -213,9 +219,7 @@ app/
 
     Navbar.tsx # The application navbar.
 
-    StuffItem.tsx # Row in the list stuff page.
-
-    StuffItemAdmin.tsx # Row in the admin list stuff page.
+    NoteItem.tsx # Note within the contact in the list contact page.
 
   lib/
 
@@ -233,15 +237,15 @@ app/
 
 ### Application functionality
 
-The application implements a simple CRUD application for managing "Stuff", which is a PostgreSQL table consisting of a name (String), a quantity (Number), a condition (one of 'excellent', 'good', 'fair', or 'poor') and an owner.
+The application implements a simple CRUD application for managing "Contact", which is a PostgreSQL table consisting of a firstName (String), a lastName (String), an address (String), an image (String), a description (String), and an owner.
 
-By default, each user only sees the Stuff that they have created. However, the settings file enables you to define default accounts. If you define a user with the role "admin", then that user gets access to a special page which lists all the Stuff defined by all users.
+By default, each user only sees the Contacts that they have created. However, the settings file enables you to define default accounts. If you define a user with the role "admin", then that user gets access to a special page which lists all the Contacts defined by all users.
 
 #### Landing page
 
 When you retrieve the app at http://localhost:3000, this is what should be displayed:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-page.png)
+![](https://github.com/longa2/digits/raw/main/doc/digits-landing-page.png)
 
 The next step is to use the Login menu to either Login to an existing account or register a new account.
 
@@ -261,7 +265,7 @@ Alternatively, clicking on the Login link, then on the Sign Up menu item display
 
 Once you log in (either to an existing account or by creating a new one), the navbar changes as follows:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-after-login-page.png)
+![](https://github.com/longa2/digits/raw/main/doc/digits-landing-after-login-page.png)
 
 You can now add new Stuff documents, and list the Stuff you have created. Note you cannot see any Stuff created by other users.
 
