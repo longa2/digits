@@ -10,7 +10,7 @@ digits is a Next.js 14 application that illustrates:
 - Alerts regarding success or failure of DB updates using [Sweet Alert](https://sweetalert.js.org/).
 - Quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Next.js ESLint rules](https://nextjs.org/docs/app/building-your-application/configuring/eslint) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
 
-The goal of this template is to help you get quickly started doing Next.js development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to implement basic page display, navigation, forms, roles, and database manipulation.
+The goal of this application is to help you store and edit your contacts using Next.js.
 
 To keep this codebase simple and small, some important capabilities are intentionally excluded from this template:
 
@@ -90,7 +90,7 @@ $
 
 ## Running the system
 
-Once the libraries are installed and the database seeded, you can run the application by invoking the "dev" script in the [package.json file](https://github.com/ics-software-engineering/nextjs-application-template/blob/master/app/package.json):
+Once the libraries are installed and the database seeded, you can run the application by invoking the "dev" script in the [package.json file](https://github.com/longa2/digits/blob/master/app/package.json):
 
 ```
 
@@ -111,7 +111,7 @@ $ npm run dev
 
 ### Viewing the running app
 
-If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000). You can login using the credentials in [settings.development.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config/settings.development.json), or else register a new account.
+If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000). You can login using the credentials in [settings.development.json](https://github.com/longa2/digits/blob/main/config/settings.development.json), or else register a new account.
 
 ### ESLint
 
@@ -166,7 +166,7 @@ The src/ directory has this structure:
 app/
 
   add/ # The add route
-    page.tsx # The Add Stuff Page
+    page.tsx # The Add Contact Page
 
   admin/
     page.tsx # The Admin Page
@@ -188,10 +188,10 @@ app/
       page.tsx # The Sign Up / Register Page
 
   edit/
-    page.tsx # The Edit Stuff Page
+    page.tsx # The Edit Contact Page
 
   list/
-    page.tsx # The List Stuff Page
+    page.tsx # The List Contact Page
 
   not-authorized/
     page.tsx # The Not Authorized Page
@@ -203,9 +203,15 @@ app/
   providers.tsx # Session providers.
 
   components/
-    AddStuffForm.tsx # The React Hook Form for adding stuff.
+    AddContactForm.tsx # The React Hook Form for adding contacts.
 
-    EditStuffForm.tsx # The Edit Stuff Form.
+    AddNoteForm.tsx # The React Hook Form for adding notes.
+    
+    ContactCard.tsx # The contact in the list contact page
+
+    ContactCardAdmin.tsx # The contact in the admin list contact page
+
+    EditContactForm.tsx # The Edit Contact Form.
 
     Footer.tsx # The application footer.
 
@@ -213,9 +219,7 @@ app/
 
     Navbar.tsx # The application navbar.
 
-    StuffItem.tsx # Row in the list stuff page.
-
-    StuffItemAdmin.tsx # Row in the admin list stuff page.
+    NoteItem.tsx # Note within the contact in the list contact page.
 
   lib/
 
@@ -233,15 +237,15 @@ app/
 
 ### Application functionality
 
-The application implements a simple CRUD application for managing "Stuff", which is a PostgreSQL table consisting of a name (String), a quantity (Number), a condition (one of 'excellent', 'good', 'fair', or 'poor') and an owner.
+The application implements a simple CRUD application for managing "Contact", which is a PostgreSQL table consisting of a firstName (String), a lastName (String), an address (String), an image (String), a description (String), and an owner.
 
-By default, each user only sees the Stuff that they have created. However, the settings file enables you to define default accounts. If you define a user with the role "admin", then that user gets access to a special page which lists all the Stuff defined by all users.
+By default, each user only sees the Contacts that they have created. However, the settings file enables you to define default accounts. If you define a user with the role "admin", then that user gets access to a special page which lists all the Contacts defined by all users.
 
 #### Landing page
 
 When you retrieve the app at http://localhost:3000, this is what should be displayed:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-page.png)
+![](https://github.com/longa2/digits/raw/main/doc/digits-landing-page.png)
 
 The next step is to use the Login menu to either Login to an existing account or register a new account.
 
@@ -249,63 +253,63 @@ The next step is to use the Login menu to either Login to an existing account or
 
 Clicking on the Login link, then on the Sign In menu item displays this page:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/signin-page.png)
+![](https://github.com/longa2/digits/raw/main/doc/digits-signin-page.png)
 
 #### Register page
 
 Alternatively, clicking on the Login link, then on the Sign Up menu item displays this page:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/register-page.png)
+![](https://github.com/longa2/digits/raw/main/doc/digits-register-page.png)
 
 #### Landing (after Login) page, non-Admin user
 
 Once you log in (either to an existing account or by creating a new one), the navbar changes as follows:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-after-login-page.png)
+![](https://github.com/longa2/digits/raw/main/doc/digits-landing-after-login-page.png)
 
 You can now add new Stuff documents, and list the Stuff you have created. Note you cannot see any Stuff created by other users.
 
-#### Add Stuff page
+#### Add Contact page
 
-After logging in, here is the page that allows you to add new Stuff:
+After logging in, here is the page that allows you to add new Contacts:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/add-stuff-page.png)
+![](https://github.com/longa2/digits/raw/main/doc/add-contact-page.png)
 
-#### List Stuff page
+#### List Contact page
 
-After logging in, here is the page that allows you to list all the Stuff you have created:
+After logging in, here is the page that allows you to list all the Contacts you have created:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/list-stuff-page.png)
+![](https://github.com/longa/digits/raw/main/doc/list-contact-page.png)
 
 You click the "Edit" link to go to the Edit Stuff page, shown next.
 
-#### Edit Stuff page
+#### Edit Contact page
 
 After clicking on the "Edit" link associated with an item, this page displays that allows you to change and save it:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/edit-stuff-page.png)
+![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/edit-contact-page.png)
 
 #### Landing (after Login), Admin user
 
 You can define an "admin" user in the settings.json file. This user, after logging in, gets a special entry in the navbar:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/admin-landing-page.png)
+![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/digits-admin-landing-page.png)
 
 #### Admin page (list all users stuff)
 
 To provide a simple example of a "super power" for Admin users, the Admin page lists all of the Stuff by all of the users:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/admin-list-stuff-page.png)
+![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/admin-list-contact-page.png)
 
 Note that non-admin users cannot get to this page, even if they type in the URL by hand.
 
 ### Tables
 
-The application implements two tables "Stuff" and "User". Each Stuff row has the following columns: id, name, quantity, condition, and owner. The User table has the following columns: id, email, password (hashed using bcrypt), role.
+The application implements three tables "Contact," "Note," "User." Each Contact has the following columns: id, firstName, lastName, address, image, description, and owner. The Note table has the following columns: id, contactId, note, owner, createdAt. The User table has the following columns: id, email, password (hashed using bcrypt), role.
 
-The Stuff and User models are defined in [prisma/schema.prisma](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/prisma/schema.prisma).
+The Stuff and User models are defined in [prisma/schema.prisma](https://github.com/longa2/digits/blob/main/prisma/schema.prisma).
 
-The tables are initialized in [prisma/seed.ts](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/prisma/seed.ts) using the command `npx prisma db seed`.
+The tables are initialized in [prisma/seed.ts](https://github.com/longa2/digits/blob/main/prisma/seed.ts) using the command `npx prisma db seed`.
 
 ### CSS
 
@@ -338,7 +342,7 @@ Routing is defined by the directory structure.
 
 For authentication, the application uses the NextAuth package.
 
-When the database is seeded, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config/settings.development.json)) is used to create users and stuff in the PostgreSQL database. That will lead to a default accounts being created.
+When the database is seeded, a settings file (such as [config/settings.development.json](https://github.com/longa2/digits/blob/main/config/settings.development.json)) is used to create users and stuff in the PostgreSQL database. That will lead to a default accounts being created.
 
 The application allows users to register and create new accounts at any time.
 
@@ -348,15 +352,15 @@ Only logged in users can manipulate Stuff items (but any registered user can man
 
 ### Configuration
 
-The [config](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config) directory is intended to hold settings files. The repository contains one file: [config/settings.development.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config/settings.development.json).
+The [config](https://github.com/longa2/digits/blob/main/config) directory is intended to hold settings files. The repository contains one file: [config/settings.development.json](https://github.com/longa2/digits/blob/main/config/settings.development.json).
 
-The [.gitignore](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/.gitignore) file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.
+The [.gitignore](https://github.com/longa2/digits/blob/main/.gitignore) file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.
 
 ### Quality Assurance
 
 #### ESLint
 
-The application includes a [.eslintrc.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/.eslintrc.json) file to define the coding style adhered to in this application. You can invoke ESLint from the command line as follows:
+The application includes a [.eslintrc.json](https://github.com/longa2/digits/blob/main/.eslintrc.json) file to define the coding style adhered to in this application. You can invoke ESLint from the command line as follows:
 
 ```
 [~/nextjs-application-template]-> npm run lint
