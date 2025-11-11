@@ -273,13 +273,13 @@ You can now add new Stuff documents, and list the Stuff you have created. Note y
 
 After logging in, here is the page that allows you to add new Contacts:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/add-stuff-page.png)
+![](https://github.com/longa2/digits/raw/main/doc/add-contact-page.png)
 
 #### List Contact page
 
 After logging in, here is the page that allows you to list all the Contacts you have created:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/list-stuff-page.png)
+![](https://github.com/longa/digits/raw/main/doc/list-contact-page.png)
 
 You click the "Edit" link to go to the Edit Stuff page, shown next.
 
@@ -287,19 +287,19 @@ You click the "Edit" link to go to the Edit Stuff page, shown next.
 
 After clicking on the "Edit" link associated with an item, this page displays that allows you to change and save it:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/edit-stuff-page.png)
+![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/edit-contact-page.png)
 
 #### Landing (after Login), Admin user
 
 You can define an "admin" user in the settings.json file. This user, after logging in, gets a special entry in the navbar:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/admin-landing-page.png)
+![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/digits-admin-landing-page.png)
 
 #### Admin page (list all users stuff)
 
 To provide a simple example of a "super power" for Admin users, the Admin page lists all of the Stuff by all of the users:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/admin-list-stuff-page.png)
+![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/admin-list-contact-page.png)
 
 Note that non-admin users cannot get to this page, even if they type in the URL by hand.
 
@@ -307,9 +307,9 @@ Note that non-admin users cannot get to this page, even if they type in the URL 
 
 The application implements two tables "Stuff" and "User". Each Stuff row has the following columns: id, name, quantity, condition, and owner. The User table has the following columns: id, email, password (hashed using bcrypt), role.
 
-The Stuff and User models are defined in [prisma/schema.prisma](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/prisma/schema.prisma).
+The Stuff and User models are defined in [prisma/schema.prisma](https://github.com/longa2/digits/blob/main/prisma/schema.prisma).
 
-The tables are initialized in [prisma/seed.ts](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/prisma/seed.ts) using the command `npx prisma db seed`.
+The tables are initialized in [prisma/seed.ts](https://github.com/longa2/digits/blob/main/prisma/seed.ts) using the command `npx prisma db seed`.
 
 ### CSS
 
