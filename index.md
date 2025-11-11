@@ -10,7 +10,7 @@ digits is a Next.js 14 application that illustrates:
 - Alerts regarding success or failure of DB updates using [Sweet Alert](https://sweetalert.js.org/).
 - Quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Next.js ESLint rules](https://nextjs.org/docs/app/building-your-application/configuring/eslint) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
 
-The goal of this template is to help you get quickly started doing Next.js development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to implement basic page display, navigation, forms, roles, and database manipulation.
+The goal of this application is to help you store and edit your contacts using Next.js.
 
 To keep this codebase simple and small, some important capabilities are intentionally excluded from this template:
 
@@ -305,7 +305,7 @@ Note that non-admin users cannot get to this page, even if they type in the URL 
 
 ### Tables
 
-The application implements two tables "Stuff" and "User". Each Stuff row has the following columns: id, name, quantity, condition, and owner. The User table has the following columns: id, email, password (hashed using bcrypt), role.
+The application implements three tables "Contact," "Note," "User." Each Contact has the following columns: id, firstName, lastName, address, image, description, and owner. The Note table has the following columns: id, contactId, note, owner, createdAt. The User table has the following columns: id, email, password (hashed using bcrypt), role.
 
 The Stuff and User models are defined in [prisma/schema.prisma](https://github.com/longa2/digits/blob/main/prisma/schema.prisma).
 
@@ -342,7 +342,7 @@ Routing is defined by the directory structure.
 
 For authentication, the application uses the NextAuth package.
 
-When the database is seeded, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config/settings.development.json)) is used to create users and stuff in the PostgreSQL database. That will lead to a default accounts being created.
+When the database is seeded, a settings file (such as [config/settings.development.json](https://github.com/longa2/digits/blob/main/config/settings.development.json)) is used to create users and stuff in the PostgreSQL database. That will lead to a default accounts being created.
 
 The application allows users to register and create new accounts at any time.
 
@@ -352,15 +352,15 @@ Only logged in users can manipulate Stuff items (but any registered user can man
 
 ### Configuration
 
-The [config](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config) directory is intended to hold settings files. The repository contains one file: [config/settings.development.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config/settings.development.json).
+The [config](https://github.com/longa2/digits/blob/main/config) directory is intended to hold settings files. The repository contains one file: [config/settings.development.json](https://github.com/longa2/digits/blob/main/config/settings.development.json).
 
-The [.gitignore](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/.gitignore) file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.
+The [.gitignore](https://github.com/longa2/digits/blob/main/.gitignore) file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.
 
 ### Quality Assurance
 
 #### ESLint
 
-The application includes a [.eslintrc.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/.eslintrc.json) file to define the coding style adhered to in this application. You can invoke ESLint from the command line as follows:
+The application includes a [.eslintrc.json](https://github.com/longa2/digits/blob/main/.eslintrc.json) file to define the coding style adhered to in this application. You can invoke ESLint from the command line as follows:
 
 ```
 [~/nextjs-application-template]-> npm run lint
